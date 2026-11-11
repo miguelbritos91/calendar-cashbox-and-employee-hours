@@ -1,0 +1,211 @@
+/* ============================================
+   CALENDARIO DE REGISTRO DE CAJA - ESTILOS
+   ============================================ */
+
+/* --- Configuración de página para impresión --- */
+@page {
+    size: A4 landscape;
+    margin: 10mm;
+}
+
+/* --- Estilos globales --- */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+h1 {
+    margin: 10px 0;
+}
+
+/* --- Controles --- */
+#controls {
+    margin-bottom: 10px;
+}
+
+select,
+input,
+button {
+    font-size: 1rem;
+    padding: 5px 10px;
+    margin-right: 5px;
+    cursor: pointer;
+}
+
+input {
+    cursor: text;
+}
+
+button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+button:hover:not(:disabled) {
+    opacity: 0.8;
+}
+
+/* --- Contenedor del calendario --- */
+#calendarContainer {
+    width: 100%;
+    max-width: 290mm;
+    /* A4 landscape ≈ 297mm ancho */
+    box-sizing: border-box;
+    border: 1px solid #999;
+}
+
+.calendar-meta {
+    box-sizing: border-box;
+    padding: 3mm 4px 2mm;
+    margin: 0;
+    text-align: right;
+    white-space: nowrap;
+}
+
+/* --- Tabla del calendario --- */
+table.calendar {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+    /* celdas de ancho uniforme */
+}
+
+table.calendar th,
+table.calendar td {
+    border: 1px solid #000;
+    vertical-align: top;
+    padding: 4px 4px 0px 4px;
+    box-sizing: border-box;
+}
+
+table.calendar th {
+    text-align: center;
+    font-weight: bold;
+    padding: 2px 4px;
+    height: auto;
+    line-height: 1.1;
+    font-family: "Montserrat", sans-serif;
+    font-style: normal;
+}
+
+table.calendar td {
+    text-align: center;
+}
+
+table.calendar td .day-number {
+    margin: 0 auto 4px;
+}
+
+/* --- Número del día --- */
+.day-number {
+    font-size: 1.3rem;
+    font-weight: bold;
+    font-family: "Montserrat", sans-serif;
+    font-style: normal;
+}
+
+/* --- Líneas de información con puntos --- */
+.line {
+    display: flex;
+    font-size: 0.85rem;
+    margin-bottom: 4px;
+}
+
+.line .label {
+    flex: none;
+    margin-right: 4px;
+    white-space: nowrap;
+    font-family: "Montserrat", sans-serif;
+    font-style: normal;
+}
+
+.line .dots {
+    flex: 1;
+    border-bottom: 1px dotted #666;
+}
+
+/* --- Colores por día de la semana --- */
+/* Lunes - Rojo claro */
+table.calendar td:not(.empty):nth-child(1),
+table.calendar th:not(.empty):nth-child(1) {
+    background: #ffa5a581;
+}
+
+/* Martes - Naranja claro */
+table.calendar td:not(.empty):nth-child(2),
+table.calendar th:not(.empty):nth-child(2) {
+    background: #ffe1a185;
+}
+
+/* Miércoles - Amarillo verdoso */
+table.calendar td:not(.empty):nth-child(3),
+table.calendar th:not(.empty):nth-child(3) {
+    background: #e1ffb583;
+}
+
+/* Jueves - Verde claro */
+table.calendar td:not(.empty):nth-child(4),
+table.calendar th:not(.empty):nth-child(4) {
+    background: #bbffd770;
+}
+
+/* Viernes - Turquesa */
+table.calendar td:not(.empty):nth-child(5),
+table.calendar th:not(.empty):nth-child(5) {
+    background: #9dfff27c;
+}
+
+/* Sábado - Azul claro */
+table.calendar td:not(.empty):nth-child(6),
+table.calendar th:not(.empty):nth-child(6) {
+    background: #8ebfff79;
+}
+
+/* Domingo - Violeta */
+table.calendar td:not(.empty):nth-child(7),
+table.calendar th:not(.empty):nth-child(7) {
+    background: #a494ff86;
+}
+
+/* Celdas vacías */
+table.calendar td.empty {
+    background: #777777 !important;
+}
+
+/* --- Estilos de impresión --- */
+@media print {
+    /* Oculta todo el body */
+    body * {
+        visibility: hidden;
+    }
+
+    /* Deja visible sólo el calendario */
+    #calendarContainer,
+    #calendarContainer * {
+        visibility: visible;
+    }
+
+    /* Asegura que ocupe toda la hoja */
+    #calendarContainer {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+    }
+
+    /* Respeta los colores de fondo en la impresión */
+    table.calendar {
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    /* Ajusta la página a A4 landscape */
+    @page {
+        size: A4 landscape;
+        margin: 10mm;
+    }
+}

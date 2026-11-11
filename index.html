@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calendario de Registro</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+
+    <!-- Estilos CSS -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <h1 id="calendarTitle">Calendario de Registro de Caja</h1>
+
+    <div id="controls">
+        <select id="calendarTypeSelect" aria-label="Tipo de calendario">
+            <option value="cash">Cierres de caja</option>
+            <option value="work-hours">Horarios de trabajo</option>
+        </select>
+        <select id="monthSelect"></select>
+        <select id="yearSelect"></select>
+        <button id="btnGenerate">Generar</button>
+        <button id="btnPrint">Imprimir</button>
+        <button id="btnSaveImg">Guardar imagen</button>
+        <button id="btnPDF">Exportar a PDF</button>
+    </div>
+    <div id="employeeNameField" class="controls">
+        <label for="employeeName">Nombre del empleado:</label>
+        <input id="employeeName" type="text" autocomplete="name" placeholder="Escribe el nombre">
+    </div>
+    <br>
+
+    <div id="calendarContainer"></div>
+
+    <!-- Dependencias externas -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+    <!-- Aplicación JavaScript -->
+    <script src="app.js"></script>
+</body>
+
+</html>
